@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untuk Kamu</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffebee;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 30px;
+            max-width: 500px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transform: rotate(0deg);
+            transition: transform 0.3s;
+        }
+        
+        .card:hover {
+            transform: rotate(1deg);
+        }
+        
+        h1 {
+            color: #e91e63;
+            margin-bottom: 20px;
+        }
+        
+        p {
+            color: #555;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: #ff4081;
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+        
+        button {
+            background-color: #e91e63;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #c2185b;
+        }
+    </style>
+</head>
+<body>
+    <div class="card" id="card">
+        <h1>Untuk Kamu 💖</h1>
+        <p>
+            Filemon 1:4 <br>
+            . <br>
+            Aku mengucap syukur kepada Allahku, setiap kali aku mengingat engkau dalam doaku. <br>
+        </p>
+        <p>
+            Roma 1:10 <br>
+             Aku berdoa, semoga dengan
+             kehendak Allah aku akhirnya
+             beroleh kesempatan untuk
+             mengunjungi kamu<br>
+            
+        </p>
+        
+        <p>
+            Amsal 31:29 <br>
+            Wanita yang cakap ada banyak, tetapi engkau jauh melebihi mereka semua.”<br> 
+        </p>
+        <button onclick="showResponse()">Klik disini jika kamu merasa Suka</button>
+    </div>
+
+    <script>
+        // Create floating hearts
+        function createHearts() {
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '❤';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.top = Math.random() * 100 + 'vh';
+                heart.style.animationDelay = Math.random() * 5 + 's';
+                heart.style.opacity = Math.random() * 0.5 + 0.5;
+                heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                document.body.appendChild(heart);
+            }
+        }
+        
+        // Show response when button is clicked
+        function showResponse() {
+            const card = document.getElementById('card');
+            card.innerHTML = `
+                <h1>Terima Kasih! 💝</h1>
+                <p>
+                    
+                    Amos 3:3 <br>
+
+                    Berjalankah dua orang bersama-sama, jika mereka belum berjanji?<br>
+                </p>
+                <p style="font-weight:bold; color:#e91e63;">
+                    Maukah kamu menjadi pacarku?
+                </p>
+                <div>
+                    <button onclick="answerYes()" style="background-color:#4CAF50;">Ya!</button>
+                    <button onclick="answerNo()" style="background-color:#f44336; margin-left:10px;">...</button>
+                </div>
+                <p style="font-weight:bold; color:#e91e63;">
+                    Ruteng, 05-08-2025
+                </p>
+
+                <p style="font-weight:bold; color:#e91e63;">
+                    Obie Januar 
+                </p>
+            `;
+            createHearts();
+        }
+        
+        // Answer yes
+        function answerYes() {
+            const card = document.getElementById('card');
+            card.innerHTML = `
+                <h1>🎉 Yeay! 🎉</h1>
+                <p>
+                    Kidung Agung 4:7 <br>
+                    Engkau cantik sekali manisku tak ada cacat cela padamu <br>
+                </p>
+                <p style="font-size:24px;">💖💖💖</p>
+            `;
+            // Create more hearts
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'heart';
+                    heart.innerHTML = '❤';
+                    heart.style.left = Math.random() * 100 + 'vw';
+                    heart.style.top = Math.random() * 100 + 'vh';
+                    heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                    heart.style.fontSize = (Math.random() * 30 + 20) + 'px';
+                    document.body.appendChild(heart);
+                    
+                    // Remove hearts after animation
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 5000);
+                }, i * 100);
+            }
+        }
+        
+        // Answer no (just for fun)
+        function answerNo() {
+            const card = document.getElementById('card');
+            card.innerHTML = `
+                <h1>Ruteng, 5 Agustus 2025</h1>
+                <p>
+                    Aku tahu kamu hanya bercanda! <br>
+                    Coba klik yang lain dong...
+                </p>
+                <button onclick="answerYes()" style="background-color:#4CAF50;">Oke, Ya!</button>
+            `;
+        }
+        
+        // Initial small hearts
+        createHearts();
+    </script>
+</body>
+</html>
